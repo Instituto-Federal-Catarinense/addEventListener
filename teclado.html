@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mover o Cursor com Teclas de Direção</title>
+  <style>
+    /* Estilo do cursor simulado */
+    #cursor {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      border-radius: 50%;
+    }
+
+    /* Estilo da área de visualização */
+    body {
+      height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemento que representa o cursor -->
+  <div id="cursor"></div>
+
+  <script>
+    // Seleciona o "cursor" que será movido
+    const cursor = document.getElementById('cursor');
+
+    // Define a posição inicial do cursor
+    let cursorX = 50;
+    let cursorY = 50;
+
+    // Valor do incremento de movimento
+    const moveDistance = 10;
+
+    // Evento keydown - para capturar as teclas de direção
+    document.addEventListener('keydown', function(event) {
+      switch (event.key) {
+        case 'ArrowLeft': // Move para a esquerda
+          cursorX -= moveDistance;
+          break;
+        case 'ArrowRight': // Move para a direita
+          cursorX += moveDistance;
+          break;
+        case 'ArrowUp': // Move para cima
+          cursorY -= moveDistance;
+          break;
+        case 'ArrowDown': // Move para baixo
+          cursorY += moveDistance;
+          break;
+        default:
+          console.log('Outra tecla pressionada');
+      }
+
+      // Atualiza a posição do "cursor" na tela
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+    });
+  </script>
+
+</body>
+</html>
